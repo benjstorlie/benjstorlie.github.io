@@ -12,7 +12,6 @@ export default function Menu() {
       try {
         const response = await request(`GET /users/benjstorlie/repos?type=all&sort=updated`, {
           owner: 'benjstorlie',
-          repo,
           headers: {
             'X-GitHub-Api-Version': '2022-11-28'
           }
@@ -31,7 +30,7 @@ export default function Menu() {
 
   return (
     <>
-      {repos.map((repo) => (
+      {projects.map((repo) => (
         <ProjectCard key={repo.id} repo={repo} />
       ))}
     </>
