@@ -8,7 +8,8 @@ export default function Project() {
 
   const [readmeContent, setReadmeContent] = useState('');
 
-  useEffect( async function () {
+  useEffect( () => {
+    async function fetchReadme() {
       try {
         const response = await request(`GET /repos/benjstorlie/${repo}/readme`, {
           owner: 'benjstorlie',
@@ -22,6 +23,8 @@ export default function Project() {
       } catch (error) {
         console.error('Error fetching readme:', error.message);
       }
+    }
+    fetchReadme();
   }, [repo]) 
 
   return (<ReactMarkdown>{readmeContent}</ReactMarkdown>)
