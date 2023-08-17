@@ -1,5 +1,6 @@
 var repoList = document.querySelector('ul');
 
+customLink("Chore Champion","https://github.com/byronontheboard/chore-champion");
 getApi();
 
 function getApi() {
@@ -25,6 +26,17 @@ function getApi() {
         }
       }
     });
+}
+
+function customLink(repoName, repoUrl, has_pages = true) {
+  var listItem = document.createElement('li');
+  if (has_pages) {
+    listItem.classList.add("has_pages");
+  } else {
+    listItem.classList.add("no_pages");
+  }
+    listItem.innerHTML = "<a href="+repoUrl+">" + repoName+"</a>";
+    repoList.appendChild(listItem);
 }
 
 fetchButton.addEventListener('click', getApi);
