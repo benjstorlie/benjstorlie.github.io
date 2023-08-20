@@ -14,17 +14,20 @@ export default function Project() {
         const response = await request(`GET /repos/benjstorlie/${repo}/readme`, {
           owner: 'benjstorlie',
           repo,
-          mode: 'gfm',
-          context: `benjstorlie/${repo}`,
           headers: {
-            accept: 'application/vnd.github.html+json',
             'X-GitHub-Api-Version': '2022-11-28'
           },
           mediaType: {
             format: 'html'
           }
         })
-        setReadmeContent(response.data);
+
+        let content = response.data
+          .replaceAll(`id="user-content-`,`id="`)
+          .replaceAll(/href="\/(?=[^"]+\.(jpg|jpeg|png|gif|bmp|svg)"><img)/g,`href="https://github.com/benjstorlie/${repo}/blob/main/`)
+          .replaceAll(`img src="/`,`img src="https://raw.githubusercontent.com/benjstorlie/${repo}/main/`);
+
+        setReadmeContent(content);
       } catch (error) {
         console.error('Error fetching readme:', error.message);
       }
