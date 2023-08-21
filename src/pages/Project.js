@@ -7,6 +7,7 @@ export default function Project() {
   const { repo } = useParams();
 
   const [readmeContent, setReadmeContent] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect( () => {
     async function fetchReadme() {
@@ -28,6 +29,7 @@ export default function Project() {
           .replaceAll(`img src="/`,`img src="https://raw.githubusercontent.com/benjstorlie/${repo}/main/`);
 
         setReadmeContent(content);
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching readme:', error.message);
       }
@@ -35,5 +37,5 @@ export default function Project() {
     fetchReadme();
   }, [repo]) 
 
-  return (<div>{parse(readmeContent)}</div>)
+  return (<div>{( isLoading ? 'loading...' : parse(readmeContent) )}</div>)
 }

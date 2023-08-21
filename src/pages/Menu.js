@@ -5,6 +5,7 @@ import ProjectCard from '../components/ProjectCard'
 export default function Menu() {
 
   const [projects, setProjects] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect( () => {
      async function fetchRepos() {
@@ -17,6 +18,7 @@ export default function Menu() {
         })
 
         setProjects(response.data);
+        setIsLoading(false);
         
       } catch (error) {
         console.error('Error fetching repos:', error.message);
@@ -29,9 +31,10 @@ export default function Menu() {
 
   return (
     <>
-      {projects.map((repo) => (
+      {( isLoading ? 'loading...'
+      : projects.map((repo) => (
         <ProjectCard key={repo.id} repo={repo} />
-      ))}
+      )))}
     </>
   )
 }
