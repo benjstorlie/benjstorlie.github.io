@@ -1,14 +1,17 @@
 import React from 'react';
-import { ReactComponent as GitHubLogo } from '../github-mark-white.svg';
+import { Link } from 'react-router-dom'
+import logo from '../logo_hexagon_128x128.png';
+import githubLogo from '../github-mark-white.svg';
 
 export default function Header() {
   return (
-    <div style={{background: '#000', color: '#fff'}}>
-      Header Content 
+    <header style={{backgroundImage: 'linear-gradient(to right,#777,#111)', color: '#fff'}}>
+      <Link to='/' >
+      <img src={logo} alt="logo"/></Link>
       <div>
-        <a href='https://github.com/benjstorlie/' target='_blank' rel="noreferrer"><GitHubLogo title='Link to My GitHub Page'/></a>
+        <a href='https://github.com/benjstorlie/' target='_blank' rel="noreferrer"><img src={githubLogo} alt='Link to My GitHub Page' style={{width: '32px', height: '32px'}} /></a>
       </div>
-    </div>
+    </header>
   );
 }
 
