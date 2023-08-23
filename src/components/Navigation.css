@@ -1,0 +1,15 @@
+nav a.active {
+  background-color: blueviolet;
+}
+
+nav a:hover {
+  background-color: lightblue;
+}
+
+nav a.active:hover {
+  background-color: lightcoral;
+}
+
+nav {
+  background-image: inherit;
+}

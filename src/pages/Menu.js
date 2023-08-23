@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { request } from "@octokit/request";
 import ProjectCard from '../components/ProjectCard'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export default function Menu() {
 
@@ -30,11 +32,13 @@ export default function Menu() {
 }, []) 
 
   return (
-    <>
+    <Row>
       {( isLoading ? 'loading...'
       : projects.map((repo) => (
-        <ProjectCard key={repo.id} repo={repo} />
+        <Col key={repo.id+'col'} xs={12} md={6} className="my-2">
+          <ProjectCard key={repo.id} repo={repo} />
+        </Col>
       )))}
-    </>
+    </Row>
   )
 }
