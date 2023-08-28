@@ -7,15 +7,19 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import AboutMe from './pages/AboutMe'
 import Container from 'react-bootstrap/Container';
+import Contact from './pages/Contact'
+import ResumePage from './pages/ResumePage'
 
 function App() {
   return (
     <>
       <Header />
-        <Container fluid>
+        <Container fluid id="main">
           <Routes>
-            <Route path='/' element={ <Menu />} />
-            <Route path='/about' element={ <AboutMe />} />
+            <Route path='/portfolio' element={ <Menu />} />
+            <Route path='/' element={ <AboutMe />} />
+            <Route path='/contact' element={ <Contact />} />
+            <Route path='/resume' element={ <ResumePage />} />
             <Route path='/:repo' element={ <Project />} />
           </Routes>
         </Container>

@@ -1,1 +1,21 @@
-# benjstorlie.github.io
+# GitHub Portfolio Site
+
+Very much in progress!
+
+## Description
+
+This site is made with React and organized with React Router.  The portfolio section uses the GitHub octokit API to retrieve all the information from my GitHub repositories, including rendering the ReadMe documents when you click to see more.
+
+## To-Do
+
+1. Add my non-coding projects to GitHub. I also think that would be a great way to have an overview, but also be able to have more documents and images if someone is interested more.
+
+2. Add filtering to the portfolio section. Since it's part of the API, options could be added like, sort by name or date. I would like to add pagination.
+
+3. Another way to filter would be to use the Github labels/tags. That would be a way to showcase particular projects, or have some links that show particular topics.
+
+4. Complete About Me and Resume.
+
+5. Similarly, I've got links in the footer to my profiles on other websites, but those profiles need to be actually filled out and updated.
+
+6. Styling. I was mainly focused on getting it functioning. So there's plenty of spacing and colors that need attention.
