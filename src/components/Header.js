@@ -5,7 +5,7 @@ import Navigation from './Navigation'
 
 export default function Header() {
   return (
-    <header style={{backgroundImage: 'linear-gradient(to right,#777,#111)', color: '#fff'}}>
+    <header>
       <Link to='/' >
       <img src={logo} alt="logo"/></Link>
       <Navigation />
