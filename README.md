@@ -19,3 +19,7 @@ This site is made with React and organized with React Router.  The portfolio sec
 5. Similarly, I've got links in the footer to my profiles on other websites, but those profiles need to be actually filled out and updated.
 
 6. Styling. I was mainly focused on getting it functioning. So there's plenty of spacing and colors that need attention.
+
+## Bugs 🐛
+
+1. The individual project pages are not working correctly on the github pages site.  The readme's do not render at all, and when the page is refreshed, it gives a 404 error.  It seems to be working fine locally.
