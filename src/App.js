@@ -2,6 +2,7 @@
 
 import { Route, Routes } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
+import Stack from 'react-bootstrap/Stack';
 
 import Menu from './pages/Menu'
 import Portfolio from './pages/Portfolio';
@@ -14,21 +15,21 @@ import ResumePage from './pages/ResumePage'
 
 function App() {
   return (
-    <>
+    <Stack style={{minHeight:'100vh'}}>
       <Header />
-        <Container fluid id="main">
-          <Routes>
-            <Route path='/portfolio' element={ <Portfolio />} >
-              <Route index element={<Menu />} />
-              <Route path=':repo' element={ <Project />} />
-            </Route>
-            <Route path='/' element={ <AboutMe />} />
-            <Route path='/contact' element={ <Contact />} />
-            <Route path='/resume' element={ <ResumePage />} />
-          </Routes>
-        </Container>
+      <Container fluid as={'main'} style={{flex:'1'}}>
+        <Routes>
+          <Route path='/portfolio' element={ <Portfolio />} >
+            <Route index element={<Menu />} />
+            <Route path=':repo' element={ <Project />} />
+          </Route>
+          <Route path='/' element={ <AboutMe />} />
+          <Route path='/contact' element={ <Contact />} />
+          <Route path='/resume' element={ <ResumePage />} />
+        </Routes>
+      </Container>
       <Footer />
-    </>
+    </Stack>
   );
 }
 
