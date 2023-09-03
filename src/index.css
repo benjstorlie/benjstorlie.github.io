@@ -33,3 +33,7 @@ footer li {
   margin-bottom: .5em;
   list-style-type: none;
 }
+
+.card:hover {
+  background-color: var(--bs-secondary-border-subtle);
+}
