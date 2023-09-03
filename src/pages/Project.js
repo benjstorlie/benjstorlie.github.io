@@ -25,7 +25,7 @@ export default function Project() {
 
         let content = response.data
           .replaceAll(`id="user-content-`,`id="`)
-          .replaceAll(/href="\.?\/(?=[^"]+\.(jpg|jpeg|png|gif|bmp|svg)"><img)/g,`href="https://github.com/benjstorlie/${repo}/blob/main/`)
+          .replaceAll(/href="\.?\//g,`href="https://github.com/benjstorlie/${repo}/blob/main/`)
           .replaceAll(/img src="\.?\//g,`img src="https://raw.githubusercontent.com/benjstorlie/${repo}/main/`);
         setReadmeContent(content);
         setIsLoading(false);
