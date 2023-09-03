@@ -16,7 +16,7 @@ export default function AboutMe() {
       </Col>
       <Col xs={12} sm>
         <p>
-          This is an about me section. Here are some personal details about me and my interests.
+        Interested in math, coding, disability advocacy, and speech &amp; language. I have experience in public education as a paraprofessional for young adults. I have a B.A. in Math with some grad school for Math and Math Education. I'd like to be part of Augmentative &amp; Alternative Communication technology, or accessibility/educational technology in general.
         </p>
       </Col>
     </Row>
