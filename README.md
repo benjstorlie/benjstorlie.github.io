@@ -4,7 +4,7 @@ Very much in progress!
 
 ## Description
 
-This site is made with React and organized with React Router.  The portfolio section uses the GitHub octokit API to retrieve all the information from my GitHub repositories, including rendering the ReadMe documents when you click to see more.
+This site is made with React and organized with React Router.  The portfolio section uses the GitHub octokit API to retrieve all the information from my GitHub repositories, including rendering the ReadMe documents when you click to see more.  The idea is to only have to update my projects in one place, and make sure that new projects are included in the portfolio. I can still add extra information to the portfolio website, but it at least has the information from Github.
 
 ## To-Do
 
@@ -23,3 +23,5 @@ This site is made with React and organized with React Router.  The portfolio sec
 ## Bugs 🐛
 
 1. The individual project pages are not working correctly on the github pages site.  The readme's do not render at all, and when the page is refreshed, it gives a 404 error.  It seems to be working fine locally.
+   
+   Update: Most of the time it works! I don't know what changed it, though!
