@@ -25,10 +25,10 @@ export default function ProjectCard({ repo , placeholder }) {
           <Card style={{maxWidth:'500px',flex:1}}>
             <Card.Header>
               <Card.Title>{transformTitle(repo.name)}</Card.Title>
-              <Badge as={'a'} bg="primary" href={repo.html_url} target="_blank" rel="noopener noreferrer">
+              <Badge as={'a'} bg="primary" href={repo.html_url} target="_blank" rel="noopener noreferrer" onClick={(e)=>e.stopPropagation()}>
                 View on GitHub
               </Badge>
-              {repo.homepage && <Badge as={'a'} bg="success" href={repo.homepage} target="_blank" rel="noopener noreferrer">
+              {repo.homepage && <Badge as={'a'} bg="success" href={repo.homepage} target="_blank" rel="noopener noreferrer" onClick={(e)=>e.stopPropagation()}>
                 View Website
               </Badge>}
             </Card.Header>
