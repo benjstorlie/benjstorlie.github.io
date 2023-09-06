@@ -21,7 +21,7 @@ export default function ProjectCard({ repo , placeholder }) {
             <Placeholder xs={6} /> <Placeholder xs={8} />
           </Placeholder></Card.Body>
         </Card>
-      : <Link to={`/${repo.name}`} style={{display:'flex',flex:'1'}}>
+      : <Link to={`${repo.name}`} style={{display:'flex',flex:'1'}}>
           <Card style={{maxWidth:'500px',flex:1}}>
             <Card.Header>
               <Card.Title>{transformTitle(repo.name)}</Card.Title>

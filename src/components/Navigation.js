@@ -21,7 +21,7 @@ export default function Navigation() {
       <Navbar.Toggle aria-controls="navbar" />
         <Navbar.Collapse id="navbar">
         <Nav>
-          <NavLink to="/portfolio" role="button" className={"nav-link"}>Portfolio</NavLink>
+          <NavLink to="/portfolio-page" role="button" className={"nav-link"}>Portfolio</NavLink>
           <NavLink to="/" role="button" className={"nav-link"}>About Me</NavLink>
           <NavLink to="/resume" role="button" className={"nav-link"}>Resume</NavLink>
           <NavLink to="/contact" role="button" className={"nav-link"}>Contact</NavLink>

@@ -19,7 +19,7 @@ function App() {
       <Header />
       <Container fluid as={'main'} style={{flex:'1'}}>
         <Routes>
-          <Route path='/portfolio' element={ <Portfolio />} >
+          <Route path='/portfolio-page' element={ <Portfolio />} >
             <Route index element={<Menu />} />
             <Route path=':repo' element={ <Project />} />
           </Route>
