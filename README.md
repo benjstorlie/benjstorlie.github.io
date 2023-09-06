@@ -22,6 +22,6 @@ This site is made with React and organized with React Router.  The portfolio sec
 
 ## Bugs 🐛
 
-1. The individual project pages are not working correctly on the github pages site.  The readme's do not render at all, and when the page is refreshed, it gives a 404 error.  It seems to be working fine locally.
+1. The individual project pages are not working correctly on the github pages site.  Sometimes, the readme's do not render at all, and when the page is refreshed, it gives a 404 error.  It seems to be working fine locally.
    
-   Update: Most of the time it works! I don't know what changed it, though!
+   I think one problem is that, since this is the github homepage, the '/:repo' urls are looking for a github pages website for that repo, rather than directing from the homepage's React Router.  Maybe switch to queries instead?
