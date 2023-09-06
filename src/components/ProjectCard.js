@@ -28,6 +28,9 @@ export default function ProjectCard({ repo , placeholder }) {
               <Badge as={'a'} bg="primary" href={repo.html_url} target="_blank" rel="noopener noreferrer">
                 View on GitHub
               </Badge>
+              {repo.homepage && <Badge as={'a'} bg="success" href={repo.homepage} target="_blank" rel="noopener noreferrer">
+                View Website
+              </Badge>}
             </Card.Header>
             <Card.Body>
               <Card.Text>{repo.description}</Card.Text>
