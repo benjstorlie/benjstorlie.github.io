@@ -1,11 +1,10 @@
 
 
-import { Route, Routes } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Stack from 'react-bootstrap/Stack';
 
 import Menu from './pages/Menu'
-import Portfolio from './pages/Portfolio';
 import Project from './pages/Project'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -14,19 +13,37 @@ import Contact from './pages/Contact'
 import ResumePage from './pages/ResumePage'
 
 function App() {
+
+  const [searchParams] = useSearchParams();
+
+  const page = searchParams.get('page');
+  const repo = searchParams.get('repo');
+
+  let mainComponent;
+
+  switch (page) {
+    case 'about':
+      mainComponent = <AboutMe />;
+      break;
+    case 'contact': 
+      mainComponent = <Contact />;
+      break;
+    case 'resume':
+      mainComponent = <ResumePage />;
+      break;
+    case 'portfolio':
+      mainComponent = repo ? <Project repo={repo} /> : <Menu />;
+      break;
+    default:
+      // Handle other cases or set a default component
+      mainComponent = <Menu />;
+  }
+
   return (
     <Stack style={{minHeight:'100vh'}}>
-      <Header />
+      <Header page={page} repo={repo} />
       <Container fluid as={'main'} style={{flex:'1'}}>
-        <Routes>
-          <Route path='/portfolio-page' element={ <Portfolio />} >
-            <Route index element={<Menu />} />
-            <Route path=':repo' element={ <Project />} />
-          </Route>
-          <Route path='/' element={ <AboutMe />} />
-          <Route path='/contact' element={ <Contact />} />
-          <Route path='/resume' element={ <ResumePage />} />
-        </Routes>
+        {mainComponent}
       </Container>
       <Footer />
     </Stack>

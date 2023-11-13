@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import {useParams} from 'react-router-dom';
 import { request } from "@octokit/request";
 import parse from 'html-react-parser';
 
-export default function Project() {
-  const { repo } = useParams();
+export default function Project( {repo} ) {
 
   const [readmeContent, setReadmeContent] = useState('');
   const [isLoading, setIsLoading] = useState(true);

@@ -3,7 +3,7 @@ import { request } from "@octokit/request";
 import ProjectCard from '../components/ProjectCard'
 import Row from 'react-bootstrap/Row';
 
-export default function Menu() {
+export default function Menu( {setSearchParams} ) {
 
   const [projects, setProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

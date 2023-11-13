@@ -21,10 +21,10 @@ export default function Navigation() {
       <Navbar.Toggle aria-controls="navbar" />
         <Navbar.Collapse id="navbar">
         <Nav>
-          <NavLink to="/portfolio-page" role="button" className={"nav-link"}>Portfolio</NavLink>
-          <NavLink to="/" role="button" className={"nav-link"}>About Me</NavLink>
-          <NavLink to="/resume" role="button" className={"nav-link"}>Resume</NavLink>
-          <NavLink to="/contact" role="button" className={"nav-link"}>Contact</NavLink>
+          <NavLink to={{ pathname: '/', search: new URLSearchParams({page: 'portfolio'}).toString() }} role="button" className={"nav-link"}>Portfolio</NavLink>
+          <NavLink to={{ pathname: '/', search: new URLSearchParams({page: 'about'}).toString() }} role="button" className={"nav-link"}>About Me</NavLink>
+          <NavLink to={{ pathname: '/', search: new URLSearchParams({page: 'resume'}).toString() }} role="button" className={"nav-link"}>Resume</NavLink>
+          <NavLink to={{ pathname: '/', search: new URLSearchParams({page: 'contact'}).toString() }} role="button" className={"nav-link"}>Contact</NavLink>
         </Nav>
         </Navbar.Collapse>
       </Container>
