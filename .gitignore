@@ -6,8 +6,9 @@
 .pnp.js
 package-lock.json
 
-# testing
+# testing/dev
 /coverage
+/.vscode
 
 # production
 /build
