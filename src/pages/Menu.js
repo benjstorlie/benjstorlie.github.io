@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { request } from "@octokit/request";
-import ProjectCard from '../components/ProjectCard'
 import Row from 'react-bootstrap/Row';
+import ProjectCard from '../components/ProjectCard'
+import { projectDetails } from '../utils/projectDetails';
 
 export default function Menu( {setSearchParams} ) {
 
@@ -17,8 +18,8 @@ export default function Menu( {setSearchParams} ) {
             'X-GitHub-Api-Version': '2022-11-28'
           }
         })
-
-        setProjects(response.data);
+        
+        setProjects(response.data.filter((repo) => !projectDetails(repo.name).exclude));
         setIsLoading(false);
         
       } catch (error) {
@@ -34,9 +35,13 @@ export default function Menu( {setSearchParams} ) {
     <Row>
       { isLoading 
       ? (<ProjectCard placeholder/>)
-      : projects.map((repo) => (
-          <ProjectCard key={repo.id} repo={repo} />
-        ))
+      : projects.map((repo) => {
+        repo = {
+          ...repo,
+          ...projectDetails[repo.name]
+        }
+          return (<ProjectCard key={repo.id} repo={repo} />)
+        })
       }
     </Row>
   )
