@@ -17,7 +17,7 @@ function App() {
   const [searchParams] = useSearchParams();
 
   const page = searchParams.get('page');
-  const repo = searchParams.get('repo');
+  const repoName = searchParams.get('repo');
 
   let mainComponent;
 
@@ -32,7 +32,7 @@ function App() {
       mainComponent = <ResumePage />;
       break;
     case 'portfolio':
-      mainComponent = repo ? <Project repo={repo} /> : <Menu />;
+      mainComponent = repoName ? <Project repoName={repoName} /> : <Menu />;
       break;
     default:
       // Handle other cases or set a default component
@@ -41,7 +41,7 @@ function App() {
 
   return (
     <Stack style={{minHeight:'100vh'}}>
-      <Header page={page} repo={repo} />
+      <Header page={page} repo={repoName} />
       <Container fluid as={'main'} style={{flex:'1'}}>
         {mainComponent}
       </Container>

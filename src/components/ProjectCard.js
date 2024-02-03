@@ -5,30 +5,22 @@ import Card from 'react-bootstrap/Card'
 import Badge from 'react-bootstrap/Badge'
 import Placeholder from 'react-bootstrap/Placeholder';
 import RepoCoverImage from './RepoCoverImage';
+import { transformTitle, handleLinkClick } from '../utils/utils';
 
 export default function ProjectCard({ repo , placeholder }) {
+
   return (
     <Col xs={12} md={6} xl={4} className="my-2 d-flex">
       {placeholder
-      ? <Card style={{maxWidth:'500px',flex:1}}>
-          <Card.Header>
-            <Placeholder as={Card.Title} animation="glow">
-              <Placeholder xs={6} />
-            </Placeholder>
-          </Card.Header>
-          <Card.Body><Placeholder as={Card.Text} animation="glow">
-            <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
-            <Placeholder xs={6} /> <Placeholder xs={8} />
-          </Placeholder></Card.Body>
-        </Card>
+      ? <PlaceHolderCard />
       : <Link to={{ pathname: '/', search: new URLSearchParams({page: 'portfolio', repo: `${repo.name}`}).toString() }} style={{display:'flex',flex:'1'}}>
           <Card style={{maxWidth:'500px',flex:1}}>
             <Card.Header>
               <Card.Title>{transformTitle(repo.name)}</Card.Title>
-              <Badge as={'a'} bg="primary" href={repo.html_url} target="_blank" rel="noopener noreferrer" onClick={(e)=>e.stopPropagation()}>
+              <Badge bg="primary" onClick={handleLinkClick(repo.html_url)}>
                 View on GitHub
               </Badge>
-              {repo.homepage && <Badge as={'a'} bg="success" href={repo.homepage} target="_blank" rel="noopener noreferrer" onClick={(e)=>e.stopPropagation()}>
+              {repo.homepage && <Badge bg="success" onClick={handleLinkClick(repo.homepage)}>
                 View Website
               </Badge>}
             </Card.Header>
@@ -43,9 +35,19 @@ export default function ProjectCard({ repo , placeholder }) {
   );
 }
 
-
-const transformTitle = (input) => input
-    .split('-')
-    .map(word => word[0].toUpperCase() + word.slice(1))
-    .join(' ');
+function PlaceHolderCard() {
+  return (
+    <Card style={{maxWidth:'500px',flex:1}}>
+      <Card.Header>
+        <Placeholder as={Card.Title} animation="glow">
+          <Placeholder xs={6} />
+        </Placeholder>
+      </Card.Header>
+      <Card.Body><Placeholder as={Card.Text} animation="glow">
+        <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
+        <Placeholder xs={6} /> <Placeholder xs={8} />
+      </Placeholder></Card.Body>
+    </Card>
+  )
+}
 

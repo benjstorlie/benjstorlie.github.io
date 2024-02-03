@@ -17,17 +17,17 @@ export default function Footer() {
           </a>
         </li>
         <li>
-          <a href="https://www.linkedin.com/in/bentley-storlie-16890488/" target='_blank' rel="noreferrer">
+          <a href="https://www.linkedin.com/in/benjstorlie/" target='_blank' rel="noreferrer">
           <img src={linkedinLogo} alt='Link to My LinkedIn Profile' className="external-logo" />
             <span>LinkedIn Profile</span>
           </a>
         </li>
-        <li>
+        {/* <li>
           <a href="https://stackoverflow.com/users/22461342/benjstorlie" target='_blank' rel="noreferrer">
           <img src={stackoverflowLogo} alt='Link to My StackOverflow Profile' className="external-logo" />
             <span>StackOverflow Profile</span>
           </a>
-        </li>
+        </li> */}
         <li>
           Email: <Email />
         </li>

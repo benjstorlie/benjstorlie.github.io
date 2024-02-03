@@ -44,12 +44,12 @@ export const projectDetails = {
     description: "Play sudoku and load saved games"
   },
   "benjstorlie.github.io": { exclude },
-  
+
 }
 
 
 
-
+// eslint-disable-next-line
 const exampleRepoData = [
   {
     "id": 1296269,

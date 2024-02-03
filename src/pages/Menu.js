@@ -19,7 +19,7 @@ export default function Menu( {setSearchParams} ) {
           }
         })
         
-        setProjects(response.data.filter((repo) => !projectDetails(repo.name).exclude));
+        setProjects(response.data.filter((repo) => !projectDetails[repo.name]?.exclude));
         setIsLoading(false);
         
       } catch (error) {

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card'
-import { projectImages } from '../utils/projectDetails';
+import { projectDetails } from '../utils/projectDetails';
 
 export default function RepoCoverImage({ repo }) {
-  const imgUrl = projectImages[repo.name] 
+  const imgUrl = projectDetails[repo.name]?.coverImage 
   ? `/repo-covers/${repo.name}.png`
   : `https://raw.githubusercontent.com/benjstorlie/${repo.name}/main/cover.png`
   const [imageExists, setImageExists] = useState(true);
@@ -18,8 +18,11 @@ export default function RepoCoverImage({ repo }) {
       setImageExists(true);
     };
 
-    img.onerror = function () {
-      // Image does not exist
+    img.onerror = function (error) {
+      // If the file cover.png does not exist in the repo root folder
+      // Don't log the error message, since it's expected that many of the image urls won't exist
+      // TODO It's still showing all the error messages though.
+      error.preventDefault();
       setImageExists(false);
     };
 
@@ -27,10 +30,12 @@ export default function RepoCoverImage({ repo }) {
     img.src = imgUrl;
   }, [imgUrl]);
 
+
+
   return (
     <>
       {imageExists ? (
-        <Card.Img variant='bottom' src={imgUrl} alt="Repository Cover"/>
+        <Card.Img variant='bottom' src={imgUrl} alt={`Image for ${repo.name}`}/>
       ) : (
         <Card.Footer />
       )}

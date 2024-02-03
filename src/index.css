@@ -34,6 +34,12 @@ footer li {
   list-style-type: none;
 }
 
+/* Bootstrap Classes */
+
 .card:hover {
   background-color: var(--bs-secondary-border-subtle);
+}
+
+img.card-image-bottom {
+  border-top: var(--bs-card-border-width) solid var(--bs-card-border-color);
 }
