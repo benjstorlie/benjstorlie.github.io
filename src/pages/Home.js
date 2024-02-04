@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { request } from "@octokit/request";
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import ProjectCard from '../components/ProjectCard'
 import Welcome from '../components/Welcome';
 import { projectDetails, showcase } from '../utils/projectDetails';

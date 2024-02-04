@@ -9,7 +9,7 @@ import { projectDetails,
   // eslint-disable-next-line
   RepoDetails
  } from '../utils/projectDetails';
-import { Col, Row } from 'react-bootstrap';
+ import { handleLinkClick } from '../utils/utils';
 
 export default function Project( {repoName} ) {
 
