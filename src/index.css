@@ -8,7 +8,11 @@ a:visited {
   color: inherit;
 }
 
-a:hover {
+/* The badge elements operate as links
+TODO: maybe have them be Bootstrap 'buttons' for better interaction?
+ */
+a:hover,
+.badge:hover {
   text-decoration: underline;
   color: inherit;
 }
