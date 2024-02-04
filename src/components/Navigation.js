@@ -32,6 +32,9 @@ export default function Navigation( {page, repoName} ) {
           <Link to={{ pathname: '/', search: new URLSearchParams({page: 'resume'}).toString() }} role="button" className={"nav-link"+(page==='resume' ? " active" : "")}>
             Resume
           </Link>
+          <Link to={{ pathname: '/', search: new URLSearchParams({page: 'contact'}).toString() }} role="button" className={"nav-link"+(page==='resume' ? " active" : "")}>
+            Contact
+          </Link>
         </Nav>
         </Navbar.Collapse>
       </Container>

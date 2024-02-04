@@ -1,3 +1,5 @@
+
+
 export const projectImages = {
   "chore-champion":true
 };
@@ -46,6 +48,12 @@ export const projectDetails = {
   "benjstorlie.github.io": { exclude },
 
 }
+
+export const showcase = [
+  'sudoku-shuffle',
+  'tech-blog',
+  'pick-a-pic'
+]
 
 
 

@@ -11,6 +11,7 @@ import Footer from './components/Footer'
 import AboutMe from './pages/AboutMe'
 import Contact from './pages/Contact'
 import ResumePage from './pages/ResumePage'
+import Home from './pages/Home';
 
 function App() {
 
@@ -36,7 +37,7 @@ function App() {
       break;
     default:
       // Handle other cases or set a default component
-      mainComponent = <Menu />;
+      mainComponent = <Home />;
   }
 
   return (
