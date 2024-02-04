@@ -15,6 +15,7 @@ a:hover,
 .badge:hover {
   text-decoration: underline;
   color: inherit;
+  cursor: pointer;
 }
 
 header,
@@ -46,4 +47,8 @@ footer li {
 
 img.card-img-bottom {
   border-top: var(--bs-card-border-width) solid var(--bs-card-border-color);
+}
+
+.badge {
+  margin: .2rem;
 }
