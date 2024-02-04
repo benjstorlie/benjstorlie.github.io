@@ -23,13 +23,13 @@ export default function Navigation( {page, repoName} ) {
       <Navbar.Toggle aria-controls="navbar" />
         <Navbar.Collapse id="navbar">
         <Nav>
-          <Link to={{ pathname: '/', search: new URLSearchParams({page: 'portfolio'}).toString() }} role="button" className={"nav-link"+((page=='portfolio' && !repoName) && "active")}>
+          <Link to={{ pathname: '/', search: new URLSearchParams({page: 'portfolio'}).toString() }} role="button" className={"nav-link"+((page==='portfolio' && !repoName) ? " active" : "")}>
             Portfolio
           </Link>
-          <Link to={{ pathname: '/', search: new URLSearchParams({page: 'about'}).toString() }} role="button" className={"nav-link"+(page=='about' && "active")}>
+          <Link to={{ pathname: '/', search: new URLSearchParams({page: 'about'}).toString() }} role="button" className={"nav-link"+(page==='about' ? " active" : "")}>
             About Me
           </Link>
-          <Link to={{ pathname: '/', search: new URLSearchParams({page: 'resume'}).toString() }} role="button" className={"nav-link"+(page=='resume' && "active")}>
+          <Link to={{ pathname: '/', search: new URLSearchParams({page: 'resume'}).toString() }} role="button" className={"nav-link"+(page==='resume' ? " active" : "")}>
             Resume
           </Link>
         </Nav>

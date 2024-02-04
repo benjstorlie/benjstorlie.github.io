@@ -4,7 +4,7 @@ import parse from 'html-react-parser';
 import LoadingErrorAlert from '../components/LoadingErrorAlert';
 import { projectDetails } from '../utils/projectDetails';
 
-export default function Project( {repo: repoName} ) {
+export default function Project( {repoName} ) {
 
   const [readmeContent, setReadmeContent] = useState('');
   const [isLoading, setIsLoading] = useState(true);

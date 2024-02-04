@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert';
 
 export default function LoadingErrorAlert( {page} ) {
@@ -5,14 +6,15 @@ export default function LoadingErrorAlert( {page} ) {
     <Alert variant="warning">
       <Alert.Heading>Content failed to load</Alert.Heading>
       <p>
-        Return to 
-        <Alert.Link>
+        <Alert.Link as="span">
+        
+        
         <Link to={(page ? 
           { pathname: '/', search: new URLSearchParams({page}).toString() } 
           : '/'
           )} >
 
-          {page ? (page[0].toUpperCase() + page.slice(1)) : 'Home'}  
+          {"Return to "+(page ? (page[0].toUpperCase() + page.slice(1)) : 'Home')}  
         
         </Link>
         </Alert.Link>
