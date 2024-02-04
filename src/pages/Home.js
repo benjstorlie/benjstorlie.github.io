@@ -47,10 +47,10 @@ export default function Home( {setSearchParams} ) {
 
   return (
     <Row>
-      <Col>
+      <Col xs={12}>
         <Welcome />
       </Col>
-      <Col>
+      <Col xs={12}>
         { loadingError ? <LoadingErrorAlert />
         : (isLoading 
         ? (<ProjectCard placeholder/>)

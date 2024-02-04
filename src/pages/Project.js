@@ -20,7 +20,7 @@ export default function Project( {repoName} ) {
   const [loadingError, setLoadingError] = useState(false);
 
   useEffect( () => {
-    async function fetchOneRepo( repoName ) {
+    async function fetchOneRepo() {
       try {
         const response = await request(`GET /repos/{owner}/{repo}`, {
           owner: 'benjstorlie',
@@ -36,14 +36,13 @@ export default function Project( {repoName} ) {
         })
 
       } catch (error) {
-
+        throw error
       }
     }
     async function fetchReadme() {
       const customReadme = projectDetails[repoName]?.readme;
       if (customReadme) {
         setReadmeContent(customReadme);
-        setIsLoading(false);
       } else {
         try {
           const response = await request(`GET /repos/benjstorlie/${repoName}/readme`, {
@@ -64,24 +63,33 @@ export default function Project( {repoName} ) {
             .replaceAll(/img src="\.?\//g,`img src="https://raw.githubusercontent.com/benjstorlie/${repoName}/main/`);
 
           setReadmeContent(content);
-          setIsLoading(false);
         } catch (error) {
-          console.error('Error fetching readme:', error.message);
-          setLoadingError(true);
-          setIsLoading(false);
+          throw error
         }
       }
     }
-    fetchReadme();
+
+    async function fetchAll() {
+      try {
+        await fetchOneRepo();
+        await fetchReadme();
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error fetching repo data: ', error.message);
+        setLoadingError(true);
+        setIsLoading(false);
+      }
+    }
+    fetchAll();
   }, [repoName]) 
 
   return (
     <Row>
-      (
+      {(
         (loadingError || isLoading)
         ? <LoadingComponent error={loadingError} />
         : (<>
-          <Col>
+          <Col xs={12}>
             <h3>
             <Badge bg="primary" onClick={handleLinkClick(repo.html_url)}>
               View on GitHub
@@ -91,11 +99,11 @@ export default function Project( {repoName} ) {
             </Badge>}
             </h3>
           </Col>
-          <Col>
+          <Col xs={12}>
             {parse(readmeContent)}
           </Col>
         </>)
-      )
+      )}
     </Row>)
 }
 
