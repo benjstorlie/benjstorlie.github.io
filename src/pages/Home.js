@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { request } from "@octokit/request";
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import ProjectCard from '../components/ProjectCard'
 import Welcome from '../components/Welcome';
 import { projectDetails, showcase } from '../utils/projectDetails';
@@ -46,11 +45,11 @@ export default function Home( {setSearchParams} ) {
 }, []) 
 
   return (
-    <Row>
-      <Col xs={12}>
+    <>
+      <Row>
         <Welcome />
-      </Col>
-      <Col xs={12}>
+      </Row>
+      <Row >
         { loadingError ? <LoadingErrorAlert />
         : (isLoading 
         ? (<ProjectCard placeholder/>)
@@ -62,7 +61,7 @@ export default function Home( {setSearchParams} ) {
             return (<ProjectCard key={repo.id} repo={repo} />)
           }))
         }
-      </Col>
-    </Row>
+      </Row>
+    </>
   )
 }

@@ -1,13 +1,15 @@
-nav a.active {
-  background-color: blueviolet;
+.navbar-nav a.active {
+  background-color: cornflowerblue;
 }
 
-nav a:hover {
-  background-color: lightblue;
+.navbar-nav a:hover {
+  background-color: coral;
 }
 
-nav a.active:hover {
-  background-color: lightcoral;
+
+.navbar .brand-img {
+  width: 1.5em;
+  height: 1.5em;
 }
 
 nav {

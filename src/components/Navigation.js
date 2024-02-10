@@ -10,14 +10,13 @@ import Navbar from 'react-bootstrap/Navbar';
 
 export default function Navigation( {page, repoName} ) {
   return (
-    <Navbar expand="sm" >
+    <Navbar expand="sm" sticky="top">
       <Container>
         <Link to="/" className="navbar-brand">
+          Ben Storlie
           <img
               src={logo}
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
+              className="brand-img d-inline-block align-top"
               alt="logo"
             /></Link>
       <Navbar.Toggle aria-controls="navbar" />

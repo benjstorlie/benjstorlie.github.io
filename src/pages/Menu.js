@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { request } from "@octokit/request";
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import ProjectCard from '../components/ProjectCard'
 import { projectDetails } from '../utils/projectDetails';
 import LoadingErrorAlert from '../components/LoadingErrorAlert';
@@ -36,10 +37,10 @@ export default function Menu( {setSearchParams} ) {
     fetchRepos();
 
 }, []) 
-
+  // ProjectCard's top container is a Bootstrap <Col>
   return (
     <Row>
-      { loadingError ? <LoadingErrorAlert />
+      { loadingError ? <Col><LoadingErrorAlert /></Col>
       : (isLoading 
       ? (<ProjectCard placeholder/>)
       : projects.map((repo) => {
