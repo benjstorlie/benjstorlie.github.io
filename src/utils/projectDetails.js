@@ -43,7 +43,10 @@ export const projectDetails = {
     extraNotes: 'This is a group project.'
   },
   "sudoku-shuffle": {
-    description: "Play sudoku and load saved games"
+    description: ""
+  },
+  "pick-a-pic": {
+    description: "Tool for Augmentative and Alternative Communication, used to make simple symbol boards for people with speech disabilities. Boards created are saved in the user's browser. It uses a picture search API to pair words with pictures for each button, and the browser's speech capability to read aloud the word when the button is tapped.\n\nThis was a group project for Coding Bootcamp. Tools used: HTML, CSS, JavaScript, Bootstrap, API"
   },
   "benjstorlie.github.io": { exclude },
 
