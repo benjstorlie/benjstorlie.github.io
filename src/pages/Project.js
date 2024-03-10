@@ -23,7 +23,7 @@ export default function Project( {repoName} ) {
     async function fetchOneRepo() {
       try {
         const response = await request(`GET /repos/{owner}/{repo}`, {
-          owner: 'benjstorlie',
+          owner: repo?.owner.login || projectDetails?.[repoName]?.owner.login || 'benjstorlie',
           repo: repoName,
           headers: {
             'X-GitHub-Api-Version': '2022-11-28'
@@ -45,8 +45,9 @@ export default function Project( {repoName} ) {
         setReadmeContent(customReadme);
       } else {
         try {
-          const response = await request(`GET /repos/benjstorlie/${repoName}/readme`, {
-            owner: 'benjstorlie',
+          const owner = repo?.owner.login || projectDetails?.[repoName]?.owner.login || 'benjstorlie';
+          const response = await request(`GET /repos/{owner}/{repo}/readme`, {
+            owner,
             repo: repoName,
             headers: {
               'X-GitHub-Api-Version': '2022-11-28'
@@ -59,8 +60,8 @@ export default function Project( {repoName} ) {
           // This re-writes the self-referencing links to explicit links to files in the repo.
           let content = response.data
             .replaceAll(`id="user-content-`,`id="`)
-            .replaceAll(/href="\.?\//g,`href="https://github.com/benjstorlie/${repoName}/blob/main/`)
-            .replaceAll(/img src="\.?\//g,`img src="https://raw.githubusercontent.com/benjstorlie/${repoName}/main/`);
+            .replaceAll(/href="\.?\//g,`href="https://github.com/${owner}/${repoName}/blob/main/`)
+            .replaceAll(/img src="\.?\//g,`img src="https://raw.githubusercontent.com/${owner}/${repoName}/main/`);
 
           setReadmeContent(content);
         } catch (error) {
