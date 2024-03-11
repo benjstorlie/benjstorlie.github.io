@@ -1,9 +1,18 @@
+.navbar-nav a {
+  border: 1px solid darkgray;
+  border-top-left-radius: 5%;
+  border-top-right-radius: 5%;
+}
+
 .navbar-nav a.active {
   background-color: cornflowerblue;
+  border-bottom-color: lightgray;
+
 }
 
 .navbar-nav a:hover {
   background-color: coral;
+  border-bottom-color: lightgray;
 }
 
 
