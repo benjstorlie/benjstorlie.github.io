@@ -130,16 +130,7 @@ export default function Project( {repoName, owner} ) {
         (loadingError || isLoading)
         ? <LoadingComponent error={loadingError} />
         : (<>
-          <Col xs={12}>
-            <h3>
-            <Badge bg="primary" onClick={handleLinkClick(repo.html_url)}>
-              View on GitHub
-            </Badge>
-            {repo.homepage && <Badge bg="success" onClick={handleLinkClick(repo.homepage)}>
-              View Website
-            </Badge>}
-            </h3>
-          </Col>
+          <ProjectHeader repo={repo} />
           <Col xs={12}>
             {parse(readmeContent)}
           </Col>
@@ -157,5 +148,22 @@ function LoadingComponent({ error }) {
         : <p>loading...</p>
       }
     </Col>
+  )
+}
+
+
+
+function ProjectHeader( {repo} ) {
+  return (
+    <Col xs={12}>
+    <h3>
+    <Badge bg="primary" onClick={handleLinkClick(repo.html_url)}>
+      View on GitHub
+    </Badge>
+    {repo.homepage && <Badge bg="success" onClick={handleLinkClick(repo.homepage)}>
+      View Website
+    </Badge>}
+    </h3>
+  </Col>
   )
 }
