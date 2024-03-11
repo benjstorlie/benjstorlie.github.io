@@ -11,7 +11,7 @@ import { projectDetails,
  } from '../utils/projectDetails';
  import { handleLinkClick } from '../utils/utils';
 
-export default function Project( {repoName} ) {
+export default function Project( {repoName, owner} ) {
 
   /** @type {[RepoDetails, React.Dispatch<React.SetStateAction<RepoDetails>>]} */
   const [repo, setRepo] = useState({})
@@ -20,34 +20,38 @@ export default function Project( {repoName} ) {
   const [loadingError, setLoadingError] = useState(false);
 
   useEffect( () => {
-    async function fetchOneRepo() {
+    async function fetchOneRepo(owner) {
+      if (!owner) {
+        owner = 'benjstorlie';
+      }
       try {
         const response = await request(`GET /repos/{owner}/{repo}`, {
-          owner: repo?.owner.login || projectDetails?.[repoName]?.owner.login || 'benjstorlie',
+          owner,
           repo: repoName,
           headers: {
             'X-GitHub-Api-Version': '2022-11-28'
           }
         });
 
-        setRepo( {
+        const repoData = {
           ...response.data,
           ...projectDetails?.[repoName]
-        })
+        }
+        setRepo(repoData);
+        return repoData;
 
       } catch (error) {
         throw error
       }
     }
-    async function fetchReadme() {
+    async function fetchReadme(ownerName='benjstorlie') {
       const customReadme = projectDetails[repoName]?.readme;
       if (customReadme) {
         setReadmeContent(customReadme);
       } else {
         try {
-          const owner = repo?.owner.login || projectDetails?.[repoName]?.owner.login || 'benjstorlie';
           const response = await request(`GET /repos/{owner}/{repo}/readme`, {
-            owner,
+            owner: ownerName,
             repo: repoName,
             headers: {
               'X-GitHub-Api-Version': '2022-11-28'
@@ -71,9 +75,45 @@ export default function Project( {repoName} ) {
     }
 
     async function fetchAll() {
+      const repoData = {};
+      
       try {
-        await fetchOneRepo();
-        await fetchReadme();
+        if (owner) {
+          try {
+            repoData = await fetchOneRepo(owner);
+          } catch (e) {
+            console.error(`Error fetching repo ${owner}/${repoName} from GitHub`)
+            try {
+              if (projectDetails?.[repoName]?.owner){
+                repoData = await fetchOneRepo(projectDetails?.[repoName]?.owner)
+              }
+            } catch (e) {
+              console.error(`Error fetching repo ${projectDetails?.[repoName]?.owner}/${repoName} from GitHub`)
+              repoData = await fetchOneRepo('benjstorlie')
+            }
+          }
+        } else if (projectDetails?.[repoName]?.owner){
+          try {
+            if (projectDetails?.[repoName]?.owner){
+              repoData = await fetchOneRepo(projectDetails?.[repoName]?.owner)
+            }
+          } catch (e) {
+            console.error(`Error fetching repo ${projectDetails?.[repoName]?.owner}/${repoName} from GitHub`)
+            repoData = await fetchOneRepo('benjstorlie');
+          }
+        } else {
+          repoData = await fetchOneRepo('benjstorlie')
+        }
+
+        const repoOwner = repoData.owner.login;
+        if (repoOwner === 'benjstorlie' && owner) {
+          // TODO: change query parameters to remove owner
+        } else if (repoOwner !== owner) {
+          // TODO: change query parameters to correct owner username
+        }
+       
+
+        await fetchReadme(repoOwner);
         setIsLoading(false);
       } catch (error) {
         console.error('Error fetching repo data: ', error.message);

@@ -40,7 +40,7 @@ function coverUrl(repoName) {
 export const projectDetails = {
   "chore-champion": {
     coverImage: coverUrl('chore-champion'),
-    owner: {login: "byronontheboard"}
+    owner: "byronontheboard"
   },
   "sudoku-shuffle": {
     description: "Sudoku puzzle app, with many note-taking options. Users can make an account to pick up their saved games and keep track of statistics.\n\nThis was the final group project for Coding Bootcamp, which was to develop a user-focused MERN stack application.",

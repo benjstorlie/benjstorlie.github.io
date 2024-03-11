@@ -13,7 +13,15 @@ export default function ProjectCard({ repo , placeholder }) {
     <Col xs={12} md={6} xl={4} className="my-2 d-flex">
       {placeholder
       ? <PlaceHolderCard />
-      : <Link to={{ pathname: '/', search: new URLSearchParams({page: 'portfolio', repo: `${repo.name}`}).toString() }} style={{display:'flex',flex:'1'}}>
+      : <Link to={{ 
+          pathname: '/', 
+          search: new URLSearchParams((repo.owner.login === 'benjstorlie' 
+          ? {page: 'portfolio', repo: repo.name} 
+          : {page: 'portfolio', repo: repo.name, owner: repo.owner.login}
+          )).toString() 
+        }} 
+        style={{display:'flex',flex:'1'}
+        }>
           <Card style={{maxWidth:'500px',flex:1}}>
             <Card.Header>
               <Card.Title>{transformTitle(repo.name)}</Card.Title>

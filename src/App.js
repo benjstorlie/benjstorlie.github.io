@@ -19,6 +19,7 @@ function App() {
 
   const page = searchParams.get('page');
   const repoName = searchParams.get('repo');
+  const owner = searchParams.get('owner');
 
   let mainComponent;
 
@@ -33,7 +34,7 @@ function App() {
       mainComponent = <ResumePage />;
       break;
     case 'portfolio':
-      mainComponent = repoName ? <Project repoName={repoName} /> : <Menu />;
+      mainComponent = repoName ? <Project repoName={repoName} owner={owner} /> : <Menu />;
       break;
     default:
       // Handle other cases or set a default component

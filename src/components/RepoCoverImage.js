@@ -5,7 +5,7 @@ import { projectDetails } from '../utils/projectDetails';
 export default function RepoCoverImage({ repo }) {
   const imgUrl = projectDetails[repo.name]?.coverImage 
   ? `/repo-covers/${repo.name}.png`
-  : `https://raw.githubusercontent.com/benjstorlie/${repo.name}/main/cover.png`
+  : `https://raw.githubusercontent.com/${repo.full_name}/main/cover.png`
   const [imageExists, setImageExists] = useState(true);
 
   useEffect(() => {
