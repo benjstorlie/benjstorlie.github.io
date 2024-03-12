@@ -21,7 +21,7 @@ export default function Navigation( {page, repoName} ) {
             /></Link>
       <Navbar.Toggle aria-controls="navbar" />
         <Navbar.Collapse id="navbar">
-        <Nav>
+        <Nav variant='tabs'>
           <Link to={{ pathname: '/', search: new URLSearchParams({page: 'portfolio'}).toString() }} role="button" className={"nav-link"+((page==='portfolio' && !repoName) ? " active" : "")}>
             Portfolio
           </Link>
