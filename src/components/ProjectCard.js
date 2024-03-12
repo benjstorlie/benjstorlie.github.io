@@ -17,7 +17,7 @@ export default function ProjectCard({ repo , placeholder }) {
           pathname: '/', 
           search: new URLSearchParams((repo.owner.login === 'benjstorlie' 
           ? {page: 'portfolio', repo: repo.name} 
-          : {page: 'portfolio', repo: repo.name, owner: repo.owner.login}
+          : {page: 'portfolio', repo: repo.name, owner: repo.owner.login || repo.ownerName}
           )).toString() 
         }} 
         style={{display:'flex',flex:'1'}

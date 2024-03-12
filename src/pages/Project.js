@@ -75,7 +75,7 @@ export default function Project( {repoName, owner} ) {
     }
 
     async function fetchAll() {
-      const repoData = {};
+      let repoData = {};
       
       try {
         if (owner) {
@@ -85,20 +85,20 @@ export default function Project( {repoName, owner} ) {
             console.error(`Error fetching repo ${owner}/${repoName} from GitHub`)
             try {
               if (projectDetails?.[repoName]?.owner){
-                repoData = await fetchOneRepo(projectDetails?.[repoName]?.owner)
+                repoData = await fetchOneRepo(projectDetails?.[repoName]?.ownerName)
               }
             } catch (e) {
-              console.error(`Error fetching repo ${projectDetails?.[repoName]?.owner}/${repoName} from GitHub`)
+              console.error(`Error fetching repo ${projectDetails?.[repoName]?.ownerName}/${repoName} from GitHub`)
               repoData = await fetchOneRepo('benjstorlie')
             }
           }
-        } else if (projectDetails?.[repoName]?.owner){
+        } else if (projectDetails?.[repoName]?.ownerName){
           try {
             if (projectDetails?.[repoName]?.owner){
-              repoData = await fetchOneRepo(projectDetails?.[repoName]?.owner)
+              repoData = await fetchOneRepo(projectDetails?.[repoName]?.ownerName)
             }
           } catch (e) {
-            console.error(`Error fetching repo ${projectDetails?.[repoName]?.owner}/${repoName} from GitHub`)
+            console.error(`Error fetching repo ${projectDetails?.[repoName]?.ownerName}/${repoName} from GitHub`)
             repoData = await fetchOneRepo('benjstorlie');
           }
         } else {
