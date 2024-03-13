@@ -7,7 +7,8 @@ export const projectImages = {
 export const exclude = {
   "prework-study-guide":true,
   "horiseon":true,
-  "regex-tutorial":true
+  "regex-tutorial":true,
+  "benjstorlie":true,
 }
 
 export const extraNotes = {
@@ -51,6 +52,7 @@ export const projectDetails = {
     tools: ["HTML", "CSS", "JavaScript", "Bootstrap", "API"]
   },
   "benjstorlie.github.io": { exclude },
+  "benjstorlie": { exclude },
 
 }
 

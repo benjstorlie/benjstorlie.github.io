@@ -20,13 +20,13 @@ export default function Project( {repoName, owner} ) {
   const [loadingError, setLoadingError] = useState(false);
 
   useEffect( () => {
-    async function fetchOneRepo(owner) {
-      if (!owner) {
-        owner = 'benjstorlie';
+    async function fetchOneRepo(ownerName) {
+      if (!ownerName) {
+        ownerName = 'benjstorlie';
       }
       try {
         const response = await request(`GET /repos/{owner}/{repo}`, {
-          owner,
+          owner: ownerName,
           repo: repoName,
           headers: {
             'X-GitHub-Api-Version': '2022-11-28'
@@ -41,6 +41,7 @@ export default function Project( {repoName, owner} ) {
         return repoData;
 
       } catch (error) {
+        console.error(`Error fetching repo ${ownerName}/${repoName} from GitHub`)
         throw error
       }
     }
@@ -69,6 +70,7 @@ export default function Project( {repoName, owner} ) {
 
           setReadmeContent(content);
         } catch (error) {
+          console.error(`Error fetching readme from ${ownerName}/${repoName}.`)
           throw error
         }
       }
@@ -77,34 +79,41 @@ export default function Project( {repoName, owner} ) {
     async function fetchAll() {
       let repoData = {};
       
+      /* TODO: Simplify this block. It is needlessly cumbersome.
+      I'm trying to have it go through a series of cases for different owner usernames.
+      If one 'owner' variable is falsy, OR if trying it results in an error, then check the next one.
+      Right now I just have repeats inside of error blocks.
+      One option: Have 'fetchOneRepo' return an error if the owner isn't provided, instead of a default?
+      */ 
+
       try {
         if (owner) {
           try {
             repoData = await fetchOneRepo(owner);
           } catch (e) {
-            console.error(`Error fetching repo ${owner}/${repoName} from GitHub`)
-            try {
-              if (projectDetails?.[repoName]?.owner){
-                repoData = await fetchOneRepo(projectDetails?.[repoName]?.ownerName)
+            if (projectDetails[repoName]?.owner){
+              const ownerName = projectDetails[repoName].ownerName
+              try {
+                repoData = await fetchOneRepo(ownerName)
+              } catch (e) {
+                repoData = await fetchOneRepo('benjstorlie');
               }
-            } catch (e) {
-              console.error(`Error fetching repo ${projectDetails?.[repoName]?.ownerName}/${repoName} from GitHub`)
-              repoData = await fetchOneRepo('benjstorlie')
+            } else {
+              repoData = await fetchOneRepo('benjstorlie');
             }
           }
-        } else if (projectDetails?.[repoName]?.ownerName){
+        } else if (projectDetails[repoName]?.ownerName){
+          const ownerName = projectDetails[repoName].ownerName
           try {
-            if (projectDetails?.[repoName]?.owner){
-              repoData = await fetchOneRepo(projectDetails?.[repoName]?.ownerName)
-            }
+            repoData = await fetchOneRepo(ownerName)
           } catch (e) {
-            console.error(`Error fetching repo ${projectDetails?.[repoName]?.ownerName}/${repoName} from GitHub`)
             repoData = await fetchOneRepo('benjstorlie');
           }
         } else {
           repoData = await fetchOneRepo('benjstorlie')
         }
 
+        /** @type {string} - The owner username given from the response data */
         const repoOwner = repoData.owner.login;
         if (repoOwner === 'benjstorlie' && owner) {
           // TODO: change query parameters to remove owner
@@ -112,6 +121,7 @@ export default function Project( {repoName, owner} ) {
           // TODO: change query parameters to correct owner username
         }
        
+        // console.log(repoData);
 
         await fetchReadme(repoOwner);
         setIsLoading(false);
