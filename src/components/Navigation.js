@@ -13,12 +13,13 @@ export default function Navigation( {page, repoName} ) {
     <Navbar expand="sm" sticky="top">
       <Container>
         <Link to="/" className="navbar-brand">
-          Ben Storlie
           <img
               src={logo}
               className="brand-img d-inline-block align-top"
               alt="logo"
-            /></Link>
+            />
+          Ben Storlie
+        </Link>
       <Navbar.Toggle aria-controls="navbar" />
         <Navbar.Collapse id="navbar">
         <Nav variant='tabs'>

@@ -4,15 +4,8 @@
   border-top-right-radius: 5%;
 } */
 
-.navbar-nav a.active {
+.nav-tabs .nav-link:hover {
   background-color: cornflowerblue;
-  /* border-bottom-color: lightgray; */
-
-}
-
-.navbar-nav a:hover {
-  background-color: coral;
-  /* border-bottom-color: lightgray; */
 }
 
 
@@ -22,5 +15,5 @@
 }
 
 nav {
-  background-image: inherit;
+  background-color: transparent;
 }
