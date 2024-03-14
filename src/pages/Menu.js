@@ -27,11 +27,7 @@ export default function Menu( {setSearchParams} ) {
         // Filter out repo's that have been excluded, those in my side profile, and sort by putting my showcased projects first.
         setProjects(response.data
           .filter((repo) => !projectDetails[repo.name]?.exclude && repo.owner.login !== 'pocketsquest')
-          .sort((repoA, repoB) => {
-            const a = showcase.indexOf(repoA.name);
-            const b = showcase.indexOf(repoB.name);
-            return ( a !== -1 ? ( b!== -1 ? 0 : -1 ) : ( b!== -1 ? 1 : 0 ) )
-          })
+          .sort((repoA, repoB) => projectDetails[repoB.name]?.showcase - projectDetails[repoA.name]?.showcase )
           );
         setIsLoading(false);
         
