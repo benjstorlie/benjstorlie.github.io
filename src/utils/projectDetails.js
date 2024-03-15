@@ -58,11 +58,19 @@ export const projectDetails = {
 };
 
 exclude.forEach((repo) => {
-  projectDetails[repo].exlude = true;
+  if (projectDetails[repo]) {
+    projectDetails[repo].exclude = true;
+  } else {
+    projectDetails[repo] = { exclude: true }
+  }
 });
 
 showcase.forEach((repo) => {
-  projectDetails[repo].showcase = true;
+  if (projectDetails[repo]) {
+    projectDetails[repo].showcase = true;
+  } else {
+    projectDetails[repo] = { showcase: true }
+  }
 });
 
 

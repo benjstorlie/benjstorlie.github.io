@@ -65,8 +65,8 @@ export default function Project( {repoName, owner} ) {
           // This re-writes the self-referencing links to explicit links to files in the repo.
           let content = response.data
             .replaceAll(`id="user-content-`,`id="`)
-            .replaceAll(/href="\.?\//g,`href="https://github.com/${owner}/${repoName}/blob/main/`)
-            .replaceAll(/img src="\.?\//g,`img src="https://raw.githubusercontent.com/${owner}/${repoName}/main/`);
+            .replaceAll(/href="\.?\//g,`href="https://github.com/${ownerName}/${repoName}/blob/main/`)
+            .replaceAll(/img src="\.?\//g,`img src="https://raw.githubusercontent.com/${ownerName}/${repoName}/main/`);
 
           setReadmeContent(content);
         } catch (error) {
@@ -165,15 +165,17 @@ function LoadingComponent({ error }) {
 
 function ProjectHeader( {repo} ) {
   return (
-    <Col xs={12}>
-    <h3>
-    <Badge bg="primary" onClick={handleLinkClick(repo.html_url)}>
-      View on GitHub
-    </Badge>
-    {repo.homepage && <Badge bg="success" onClick={handleLinkClick(repo.homepage)}>
-      View Website
-    </Badge>}
-    </h3>
-  </Col>
+    <>
+      <Col xs={12}>
+        <Badge bg="primary" onClick={handleLinkClick(repo.html_url)}>
+          View on GitHub
+        </Badge>
+        {repo.homepage && <Badge bg="success" onClick={handleLinkClick(repo.homepage)}>
+          View Website
+        </Badge>}
+      </Col>
+      {projectDetails[repo.name]?.description && 
+        <Col xs={12}>{projectDetails[repo.name].description}</Col>}
+    </>
   )
 }

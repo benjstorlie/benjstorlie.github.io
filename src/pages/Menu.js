@@ -3,7 +3,7 @@ import { request } from "@octokit/request";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ProjectCard from '../components/ProjectCard'
-import { projectDetails, showcase } from '../utils/projectDetails';
+import { projectDetails } from '../utils/projectDetails';
 import LoadingErrorAlert from '../components/LoadingErrorAlert';
 
 export default function Menu( {setSearchParams} ) {
@@ -27,7 +27,7 @@ export default function Menu( {setSearchParams} ) {
         // Filter out repo's that have been excluded, those in my side profile, and sort by putting my showcased projects first.
         setProjects(response.data
           .filter((repo) => !projectDetails[repo.name]?.exclude && repo.owner.login !== 'pocketsquest')
-          .sort((repoA, repoB) => projectDetails[repoB.name]?.showcase - projectDetails[repoA.name]?.showcase )
+          .sort((repoA, repoB) => (projectDetails[repoB.name]?.showcase ? 1 : 0) - (projectDetails[repoA.name]?.showcase ? 1 : 0) )
           );
         setIsLoading(false);
         
