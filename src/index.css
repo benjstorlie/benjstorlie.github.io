@@ -3,6 +3,14 @@ a {
   color: inherit;
 }
 
+p>a {
+  font-weight: bold;
+}
+
+p>a:hover {
+  text-decoration: underline;
+}
+
 /* The badge elements operate as links
 TODO: maybe have them be Bootstrap 'buttons' for better interaction?
  */
