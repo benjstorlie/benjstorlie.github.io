@@ -141,7 +141,7 @@ export default function Project( {repoName, owner} ) {
         ? <LoadingComponent error={loadingError} />
         : (<>
           <ProjectHeader repo={repo} />
-          <Col xs={12}>
+          <Col xs={12} className='markdown-body'>
             {parse(readmeContent)}
           </Col>
         </>)
@@ -175,7 +175,7 @@ function ProjectHeader( {repo} ) {
         </Badge>}
       </Col>
       {projectDetails[repo.name]?.description && 
-        <Col xs={12}>{projectDetails[repo.name].description}</Col>}
+        <Col xs={12}><p>{projectDetails[repo.name].description}</p></Col>}
     </>
   )
 }

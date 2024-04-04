@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 // css
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'github-markdown-css';
 import './index.css';
 
 import App from './App';
