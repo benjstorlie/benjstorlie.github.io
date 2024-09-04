@@ -26,13 +26,13 @@ JavaScript ES6+, CSS3, HTML5, SQL, NoSQL, GitHub, MongoDB, MySQL, Express, React
 - Role: Group Project Member
 - Tools: HTML, CSS, JavaScript, Bootstrap, API
 
-### Sudoku Shuffle | [github.com/benjstorlie/sudoku-shuffle](https://github.com/benjstorlie/sudoku-shuffle/) | [bit.ly/sudokushuffle](https://bit.ly/sudokushuffle/)
+### Sudoku Shuffle | [github.com/benjstorlie/sudoku-shuffle](https://github.com/benjstorlie/sudoku-shuffle/) | [bit.ly/sudokushuffle](https://sudoku-shuffle-8008b5abf537.herokuapp.com/)
 
 - Summary: Sudoku game app enabled with some advanced techniques. Users can make an account to save games and keep track of stats.
 - Role: Group Project Member
 - Tools: HTML, CSS, JavaScript, Bootstrap, React, MongoDB
 
-### Tech Blog | [github.com/benjstorlie/tech-blog](https://github.com/benjstorlie/tech-blog/) | [bit.ly/bjstechblog](http://bit.ly/bjstechblog/)
+### Tech Blog | [github.com/benjstorlie/tech-blog](https://github.com/benjstorlie/tech-blog/) | [bit.ly/bjstechblog](https://tech-blog-072023-2817de97af34.herokuapp.com/)
 
 - Summary: Mockup of a blog posting website. Features capabilities for comments and tags
 - Role: Sole Author
