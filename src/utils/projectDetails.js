@@ -43,6 +43,7 @@ export const projectDetails = {
     ownerName: "byronontheboard"
   },
   "sudoku-shuffle": {
+    homepage: "https://sudoku-shuffle-8008b5abf537.herokuapp.com/",
     description: "Sudoku puzzle app, with many note-taking options. Users can make an account to pick up their saved games and keep track of statistics.\n\nThis was the final group project for Coding Bootcamp, which was to develop a user-focused MERN stack application.",
     tools: ["React", "Bootstrap", "GraphQL", "MongoDB", "Express", "Node", "Heroku", "HTML", "CSS", "JavaScript"]
   },
@@ -50,6 +51,9 @@ export const projectDetails = {
     description: "Tool for Augmentative and Alternative Communication, used to make simple symbol boards for people with speech disabilities. Boards created are saved in the user's browser. It uses a picture search API to pair words with pictures for each button, and the browser's speech capability to read aloud the word when the button is tapped.\n\nThis was a group project for Coding Bootcamp.",
     tools: ["HTML", "CSS", "JavaScript", "Bootstrap", "API"]
   },
+  "tech-blog": {
+    homepage: "https://tech-blog-072023-2817de97af34.herokuapp.com/"
+  }
 };
 
 exclude.forEach((repo) => {
